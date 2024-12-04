@@ -1,0 +1,11 @@
+# news_fetcher.py
+
+import requests
+
+def fetch_news(api_key, category="technology"):
+    url = f"https://newsapi.org/v2/top-headlines?category={category}&country=us&apiKey={api_key}"
+    response = requests.get(url).json()
+    return [article["title"] for article in response.get("articles", [])]
+
+# Sample usage
+print(fetch_news("your_api_key", "technology"))
